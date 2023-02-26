@@ -42,5 +42,4 @@ console.log(form);
 </div>
 
 <!--
-<input name="email" type="email" required>
 -->

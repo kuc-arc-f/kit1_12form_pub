@@ -1,27 +1,31 @@
 import { dev } from '$app/environment';
 import { fail } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
+//import { goto } from '$app/navigation';
+import Test2 from './Test2';
 
 /** @type {import('./$types').Actions} */
 export const actions = {
-    //@ts-ignore
-    default: async ({ cookies, request}) => {
+  //@ts-ignore
+  default: async ({ cookies, request}) => {
+      try{
         const data = await request.formData();
-        const email = data.get('email');
-        const password = data.get('password');
-		if (!email) {
-			return fail(400, { email, missing: true });
-		}         
-		if (!password) {
-			return fail(400, { password, missing: true });
-		}         
-console.log("email=", email);       
-console.log("password=", password);
-        //TODO
-        const user = {name: "name1111"};
-//        cookies.set('sessionid', user);
-        return {
-            success: true,
-            user: user,
-        };
-    }
+        const name = data.get('name');
+        if (!name) {
+          return fail(400, { name, missing: true });
+        }         
+console.log("name=", name);       
+        await Test2.addPost(name);
+      } catch (e) {
+        console.error(e);
+        return fail(400, { name: "", missing: true });
+      }        
+//      throw redirect(307, '/');
+      return {
+        success: true,
+        user: {},
+      };
+/*
+      */
+  }
 };

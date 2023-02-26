@@ -28,6 +28,9 @@
 			<li aria-current={$page.url.pathname === '/test' ? 'page' : undefined}>
 				<a href="/test">[ Test ]</a>
 			</li>
+			<li aria-current={$page.url.pathname === '/test2' ? 'page' : undefined}>
+				<a href="/test2">[ test2 ]</a>
+			</li>
 			<li aria-current={$page.url.pathname === '/crud' ? 'page' : undefined}>
 				<a href="/crud">[ Crud ]</a>
 			</li>			
